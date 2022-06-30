@@ -3,6 +3,7 @@ import fetch from 'node-fetch'
 import fs from 'fs'
 import prompt from 'prompt'
 
+// connect to web sockets
 const ws = new WebSocket('ws://localhost:3000')
 
 ws.on('open', () => {
@@ -22,6 +23,7 @@ ws.on('message', function (data) {
   })
 })
 
+// prompt user for file path
 const getFilePath = new Promise(res => {
   prompt.start()
 
@@ -32,6 +34,7 @@ const getFilePath = new Promise(res => {
   })
 })
 
+// send file to node B
 async function sendFile() {
   const filePath = await getFilePath
 

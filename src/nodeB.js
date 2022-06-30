@@ -6,6 +6,7 @@ const app = express()
 
 app.use(express.raw({type: 'application/sla', limit: '100mb'}))
 
+// pass on data to web socket server
 app.post('/', async (req, res) => {
   req.accepts('application/sla')
   ws.send(req.body)
