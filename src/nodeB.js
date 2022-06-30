@@ -5,8 +5,7 @@ const ws = new WebSocket('ws://localhost:3000')
 const app = express()
 
 app.post('/', (req, res) => {
-  console.log(req.body)
-
+  req.accepts('application/sla')
   ws.send('hi')
 })
 
