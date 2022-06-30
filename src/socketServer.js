@@ -3,7 +3,7 @@ const wss = new WebSocketServer({ port: 3000 })
 
 wss.on('connection', ws => {
   ws.on('message', async (data) => {
-    broadcast(data.toString())
+    broadcast(data)
   })
 })
 

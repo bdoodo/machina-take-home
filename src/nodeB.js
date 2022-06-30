@@ -4,9 +4,12 @@ import WebSocket from 'ws'
 const ws = new WebSocket('ws://localhost:3000')
 const app = express()
 
-app.post('/', (req, res) => {
+app.use(express.raw({type: 'application/sla', limit: '100mb'}))
+
+app.post('/', async (req, res) => {
   req.accepts('application/sla')
-  ws.send('hi')
+  ws.send(req.body)
+  res.status(201)
 })
 
 app.listen(3001, () => {
